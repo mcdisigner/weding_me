@@ -1,0 +1,505 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Chalith & Piyumi | Wedding Invitation & RSVP (සිංහල & English)</title>
+  <meta name="description" content="Official Wedding Invitation for Chalith & Piyumi on September 20, 2026. අපගේ විවාහ මංගල ආරාධනය." />
+  <meta name="theme-color" content="#faf7f2" />
+
+  <!-- ════════════════════════════════════════════════════════
+       GOOGLE FONTS:
+       - 'Noto Serif Sinhala' & 'Noto Sans Sinhala': Luxury Sinhala
+       - 'Great Vibes': Calligraphy Script
+       - 'Playfair Display': Classic Serif
+       - 'Montserrat': Modern UI
+  ════════════════════════════════════════════════════════ -->
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Great+Vibes&family=Montserrat:ital,wght@0,300;0,400;0,500;0,600;0,700;1,300;1,400&family=Noto+Sans+Sinhala:wght@400;500;600;700&family=Noto+Serif+Sinhala:wght@400;600;700&family=Playfair+Display:ital,wght@0,400;0,600;0,700;1,400;1,600&display=swap" rel="stylesheet" />
+
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body data-lang="si">
+
+  <!-- ════════════════════════════════════════════════════════
+       LUXURY ENTRANCE ENVELOPE / AUTO-MUSIC STARTER
+       (Solves browser autoplay policy and plays music immediately on open!)
+  ════════════════════════════════════════════════════════ -->
+  <div class="entrance-envelope-screen" id="entranceScreen" role="dialog" aria-modal="true" aria-label="Open your wedding invitation">
+    <div class="envelope-card-box">
+      <div class="env-seal-wrapper">
+        <div class="wax-seal-badge" id="waxSealBtn">💍</div>
+      </div>
+
+      <div class="env-monogram-text">C &amp; P</div>
+      <p class="env-sinhala-lead">අපගේ විවාහ මංගල ආරාධනය</p>
+      <h2 class="env-names-heading">Chalith &amp; Piyumi</h2>
+      <p class="env-date-sub">2026 සැප්තැම්බර් 20 · Florence, Italy</p>
+
+      <button class="btn-open-envelope" id="openInvitationBtn" aria-label="Open Invitation and play music">
+        <span class="btn-shine"></span>
+        <span class="btn-open-content">
+          <span>ආරාධනා පත්‍රය විවෘත කරන්න 💌</span>
+        </span>
+      </button>
+
+      <p class="env-music-note">
+        <span class="note-icon">🎵</span>
+        <span>විවෘත කළ සැනින් මංගල සංගීතය වාදනය වේ</span>
+      </p>
+    </div>
+  </div>
+
+  <!-- ════════════════════════════════════════════════════════
+       TOP FLOATING BAR: LANGUAGE SWITCHER & MUSIC PLAYER
+  ════════════════════════════════════════════════════════ -->
+  <header class="top-action-bar">
+    
+    <!-- Language Switcher: Sinhala / English -->
+    <div class="lang-switch-container" role="group" aria-label="Language selection">
+      <button class="lang-btn active" id="btnLangSi" onclick="setLanguage('si')">
+        <span class="flag">🇱🇰</span>
+        <span>සිංහල</span>
+      </button>
+      <button class="lang-btn" id="btnLangEn" onclick="setLanguage('en')">
+        <span class="flag">🇬🇧</span>
+        <span>English</span>
+      </button>
+    </div>
+
+    <!-- Music Player Pill -->
+    <button class="music-player-pill" id="musicToggleBtn" aria-label="Toggle Romantic Background Music" title="Play / Pause Wedding Melody">
+      <span class="disc-icon" id="discIcon">🎵</span>
+      <span class="music-label" data-en="Wedding Song" data-si="සංගීතය">සංගීතය</span>
+      <span class="sound-wave-bars" id="soundWaveBars" aria-hidden="true">
+        <span></span><span></span><span></span><span></span><span></span>
+      </span>
+    </button>
+  </header>
+
+  <audio id="weddingMusic" loop preload="none"></audio>
+
+  <!-- ════════════════════════════════════════════════════════
+       1. HERO SECTION (FULL SCREEN)
+  ════════════════════════════════════════════════════════ -->
+  <section class="hero-section" id="hero">
+    <div class="hero-backdrop" aria-hidden="true"></div>
+
+    <div class="hero-container">
+      <div class="hero-monogram animate-fade">C &amp; P</div>
+      
+      <!-- Bilingual Subtitle -->
+      <p class="hero-eyebrow animate-fade delay-1" data-en="Save the Date • Official Wedding Invitation" data-si="අපගේ විවාහ මංගල ආරාධනය • Save the Date">
+        අපගේ විවාහ මංගල ආරාධනය • Save the Date
+      </p>
+
+      <p class="hero-hosts animate-fade delay-1" data-en="Together with our beloved parents" data-si="දෙමාපිය ආශිර්වාදය හා අපමණ සෙනෙහස මැද">
+        දෙමාපිය ආශිර්වාදය හා අපමණ සෙනෙහස මැද
+      </p>
+
+      <!-- ✏️ COUPLE NAMES -->
+      <h1 class="hero-names animate-fade delay-2">
+        <span class="name">Chalith</span>
+        <span class="amp">&amp;</span>
+        <span class="name">Piyumi</span>
+      </h1>
+
+      <div class="hero-ornament animate-fade delay-2" aria-hidden="true">
+        <span class="line"></span>
+        <span class="diamond">❦</span>
+        <span class="line"></span>
+      </div>
+
+      <!-- ✏️ EDIT WEDDING DATE HERE -->
+      <p class="hero-date animate-fade delay-3">
+        <span data-en="Saturday · September 20, 2026" data-si="2026 සැප්තැම්බර් මස 20 වන සෙනසුරාදා">2026 සැප්තැම්බර් මස 20 වන සෙනසුරාදා</span>
+        <span class="dot">•</span>
+        <span>Florence, Italy</span>
+      </p>
+
+      <!-- Hero Quick Action Pills -->
+      <div class="hero-actions-deck animate-fade delay-4">
+        <a href="#rsvp" class="hero-action-btn btn-primary-gold">
+          <span data-en="💌 Confirm RSVP" data-si="💌 පැමිණීම ස්ථිර කරන්න (RSVP)">💌 පැමිණීම ස්ථිර කරන්න (RSVP)</span>
+        </a>
+        <a href="#details" class="hero-action-btn btn-secondary-glass">
+          <span data-en="📍 Venues &amp; Map" data-si="📍 වේලාවන් හා ස්ථාන (Map)">📍 වේලාවන් හා ස්ථාන (Map)</span>
+        </a>
+      </div>
+
+      <!-- Scroll indicator -->
+      <a href="#countdown" class="hero-scroll-btn animate-fade delay-4" aria-label="Scroll down">
+        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M7 13l5 5 5-5M7 6l5 5 5-5"/></svg>
+      </a>
+    </div>
+  </section>
+
+  <!-- ════════════════════════════════════════════════════════
+       2. LIVE COUNTDOWN TIMER (BILINGUAL)
+  ════════════════════════════════════════════════════════ -->
+  <section class="countdown-section" id="countdown">
+    <div class="container text-center">
+      <p class="section-tag reveal" data-en="The Auspicious Moment" data-si="සුභ මංගල හෝරාවට">සුභ මංගල හෝරාවට</p>
+      <h2 class="section-title reveal" data-en="Counting Down to Forever" data-si="මංගල දිනයට තව">මංගල දිනයට තව</h2>
+      <div class="section-ornament reveal" aria-hidden="true"><span></span>❦<span></span></div>
+
+      <!-- Countdown Grid -->
+      <div class="countdown-card-grid reveal delay-1" aria-live="polite">
+        <div class="countdown-box">
+          <span class="cd-number" id="cdDays">00</span>
+          <span class="cd-unit" data-en="Days" data-si="දින">දින</span>
+        </div>
+        <div class="cd-separator" aria-hidden="true">:</div>
+        <div class="countdown-box">
+          <span class="cd-number" id="cdHours">00</span>
+          <span class="cd-unit" data-en="Hours" data-si="පැය">පැය</span>
+        </div>
+        <div class="cd-separator" aria-hidden="true">:</div>
+        <div class="countdown-box">
+          <span class="cd-number" id="cdMinutes">00</span>
+          <span class="cd-unit" data-en="Minutes" data-si="මිනිත්තු">මිනිත්තු</span>
+        </div>
+        <div class="cd-separator" aria-hidden="true">:</div>
+        <div class="countdown-box">
+          <span class="cd-number" id="cdSeconds">00</span>
+          <span class="cd-unit" data-en="Seconds" data-si="තත්පර">තත්පර</span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ════════════════════════════════════════════════════════
+       3. OUR STORY / WELCOME (BILINGUAL)
+  ════════════════════════════════════════════════════════ -->
+  <section class="story-section" id="story">
+    <div class="container">
+      <div class="story-layout">
+        
+        <!-- Couple Photo with Polaroid Frame -->
+        <div class="story-photo-side reveal">
+          <div class="photo-polaroid-frame">
+            <div class="tape-strip" aria-hidden="true"></div>
+            <img src="images/couple.jpg" alt="Chalith and Piyumi" class="story-photo" onerror="this.src='https://images.unsplash.com/photo-1519741497674-611481863552?auto=format&fit=crop&w=800&q=80'" />
+            <p class="polaroid-tag">Chalith &amp; Piyumi</p>
+          </div>
+        </div>
+
+        <!-- Story Text -->
+        <div class="story-text-side reveal delay-1">
+          <p class="section-tag" data-en="Welcome &amp; Blessings" data-si="ආයුබෝවන් • සාදරයෙන් පිළිගනිමු">ආයුබෝවන් • සාදරයෙන් පිළිගනිමු</p>
+          <h2 class="section-title text-left" data-en="Our Love Story" data-si="අපගේ ආදර කතාව">අපගේ ආදර කතාව</h2>
+          <div class="section-ornament text-left" aria-hidden="true"><span></span>❦<span></span></div>
+
+          <p class="story-quote" data-en="“True love stories never have endings, only beautiful beginnings.”" data-si="“ජීවිත ගමනේ සුන්දරම මංසන්ධියකදී හමුවූ අප, සදාකාලික බැඳීමකට අත්වැල් බැඳගන්නා මොහොත...”">
+            “ජීවිත ගමනේ සුන්දරම මංසන්ධියකදී හමුවූ අප, සදාකාලික බැඳීමකට අත්වැල් බැඳගන්නා මොහොත...”
+          </p>
+
+          <p class="story-paragraph" data-en="We are overjoyed to welcome you into our celebration of love and commitment. Having you stand with us as we exchange our vows is the greatest blessing we could ask for." data-si="අපගේ නව දිවියේ ආරම්භය සනිටුහන් වන මෙම උතුම් දිනයේදී, අපගේ ආදරණීය ඥාතී හිතමිත්‍රාදීන් වන ඔබ සැමගේ ආශිර්වාදය අපට මහත් ශක්තියක් සහ සතුටකි.">
+            අපගේ නව දිවියේ ආරම්භය සනිටුහන් වන මෙම උතුම් දිනයේදී, අපගේ ආදරණීය ඥාතී හිතමිත්‍රාදීන් වන ඔබ සැමගේ ආශිර්වාදය අපට මහත් ශක්තියක් සහ සතුටකි.
+          </p>
+          
+          <p class="story-paragraph" data-en="We cannot wait to celebrate this magical milestone with our dearest family and friends." data-si="මෙම සුන්දර දිනය අප සමඟ එක්ව ප්‍රීතියෙන් සමරන්නට ඔබ සැමට ගෞරවයෙන් ආරාධනා කර සිටිමු.">
+            මෙම සුන්දර දිනය අප සමඟ එක්ව ප්‍රීතියෙන් සමරන්නට ඔබ සැමට ගෞරවයෙන් ආරාධනා කර සිටිමු.
+          </p>
+
+          <p class="story-calligraphy-sign">Chalith &amp; Piyumi</p>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- ════════════════════════════════════════════════════════
+       4. EVENT DETAILS WITH SINGLE UNIFIED INTERACTIVE GOOGLE MAP
+  ════════════════════════════════════════════════════════ -->
+  <section class="details-section" id="details">
+    <div class="container text-center">
+      <p class="section-tag reveal" data-en="Venues &amp; Schedule" data-si="වේලාවන් සහ ස්ථාන">වේලාවන් සහ ස්ථාන</p>
+      <h2 class="section-title reveal" data-en="Event Details &amp; Location" data-si="මංගල උත්සව විස්තර">මංගල උත්සව විස්තර</h2>
+      <div class="section-ornament reveal" aria-hidden="true"><span></span>❦<span></span></div>
+      <p class="section-subtitle reveal" data-en="Interactive map is embedded below. Select a venue to view the route." data-si="ස්ථානයන් පහසුවෙන් සොයාගැනීමට පහත සිතියම (Interactive Map) බලන්න.">
+        ස්ථානයන් පහසුවෙන් සොයාගැනීමට පහත සිතියම (Interactive Map) බලන්න.
+      </p>
+
+      <div class="venues-grid">
+
+        <!-- VENUE 1: CEREMONY / PORUWA -->
+        <article class="venue-showcase-card reveal delay-1">
+          <div class="venue-info-box">
+            <span class="venue-badge" data-en="CEREMONY" data-si="පෝරුවේ චාරිත්‍ර / CEREMONY">පෝරුවේ චාරිත්‍ර / CEREMONY</span>
+            <div class="venue-icon" aria-hidden="true">💍</div>
+            <h3 class="venue-heading" data-en="The Wedding Ceremony" data-si="විවාහ චාරිත්‍ර">විවාහ චාරිත්‍ර</h3>
+            <p class="venue-time-badge" data-en="Saturday, Sept 20, 2026 · 4:00 PM" data-si="සෙනසුරාදා සවස 4:00 ට">සෙනසුරාදා සවස 4:00 ට</p>
+            
+            <p class="venue-place-name"><strong>St. Margaret's Chapel</strong></p>
+            <p class="venue-street-address">12 Rose Garden Lane, Florence, Italy 50122</p>
+
+            <button class="btn btn-gold" onclick="addToCalendar('ceremony')">
+              <span data-en="📅 Add to Calendar" data-si="📅 Calendar එකට Add කරන්න">📅 Calendar එකට Add කරන්න</span>
+            </button>
+          </div>
+        </article>
+
+        <!-- VENUE 2: RECEPTION -->
+        <article class="venue-showcase-card reveal delay-2">
+          <div class="venue-info-box">
+            <span class="venue-badge" data-en="RECEPTION" data-si="මංගල සාදය / RECEPTION">මංගල සාදය / RECEPTION</span>
+            <div class="venue-icon" aria-hidden="true">🥂</div>
+            <h3 class="venue-heading" data-en="Dinner &amp; Reception" data-si="රාත්‍රී භෝජන සංග්‍රහය">රාත්‍රී භෝජන සංග්‍රහය</h3>
+            <p class="venue-time-badge" data-en="Saturday, Sept 20, 2026 · 7:00 PM" data-si="සෙනසුරාදා රාත්‍රී 7:00 සිට">සෙනසුරාදා රාත්‍රී 7:00 සිට</p>
+            
+            <p class="venue-place-name"><strong>Villa Roseto Ballroom</strong></p>
+            <p class="venue-street-address">8 Belvedere Terrace, Florence, Italy 50125</p>
+
+            <button class="btn btn-gold" onclick="addToCalendar('reception')">
+              <span data-en="📅 Add to Calendar" data-si="📅 Calendar එකට Add කරන්න">📅 Calendar එකට Add කරන්න</span>
+            </button>
+          </div>
+        </article>
+
+      </div>
+
+      <!-- ══════════════════════════════════════════
+           SINGLE UNIFIED INTERACTIVE GOOGLE MAP
+      ══════════════════════════════════════════ -->
+      <div class="unified-map-card reveal delay-3">
+        <div class="map-switcher-tabs">
+          <button class="map-tab-btn active" id="btnMapCeremony" onclick="switchMap('ceremony')">
+            <span data-en="⛪ St. Margaret's Chapel Map" data-si="⛪ Ceremony ස්ථානයේ සිතියම">⛪ Ceremony ස්ථානයේ සිතියම</span>
+          </button>
+          <button class="map-tab-btn" id="btnMapReception" onclick="switchMap('reception')">
+            <span data-en="🥂 Villa Roseto Ballroom Map" data-si="🥂 Reception ස්ථානයේ සිතියම">🥂 Reception ස්ථානයේ සිතියම</span>
+          </button>
+        </div>
+
+        <div class="map-display-container">
+          <iframe 
+            class="unified-google-map"
+            id="unifiedMapFrame"
+            title="Interactive Wedding Location Map"
+            src="https://maps.google.com/maps?q=Cathedral+of+Santa+Maria+del+Fiore+Florence+Italy&t=&z=15&ie=UTF8&iwloc=&output=embed"
+            loading="lazy" 
+            allowfullscreen>
+          </iframe>
+
+          <div class="map-footer-action">
+            <a href="https://maps.google.com/?q=Florence+Cathedral+Italy" target="_blank" rel="noopener" id="externalMapLink" class="map-app-link">
+              <span data-en="Open in Google Maps App ↗" data-si="Google Maps හරහා Open කරන්න ↗">Google Maps හරහා Open කරන්න ↗</span>
+            </a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ════════════════════════════════════════════════════════
+       5. PHOTO GALLERY — POLAROID SCRAPBOOK (BILINGUAL)
+  ════════════════════════════════════════════════════════ -->
+  <section class="gallery-section" id="gallery">
+    <div class="container text-center">
+      <p class="section-tag reveal" data-en="Captured Moments" data-si="සුන්දර මතකයන්">සුන්දර මතකයන්</p>
+      <h2 class="section-title reveal" data-en="Our Memory Scrapbook" data-si="අපේ මතක සටහන්">අපේ මතක සටහන්</h2>
+      <div class="section-ornament reveal" aria-hidden="true"><span></span>❦<span></span></div>
+      <p class="section-subtitle reveal" data-en="Tap any photo to view in fullscreen." data-si="විශාල කර බැලීමට ඕනෑම ඡායාරූපයක් click කරන්න.">
+        විශාල කර බැලීමට ඕනෑම ඡායාරූපයක් click කරන්න.
+      </p>
+
+      <div class="polaroid-scrapbook-grid">
+
+        <div class="polaroid-card tilt-left reveal delay-1" tabindex="0" role="button" aria-label="Photo 1">
+          <div class="tape-corner" aria-hidden="true"></div>
+          <div class="photo-inner">
+            <img src="images/gallery1.jpg" alt="Emma and James floral arch" loading="lazy" onerror="this.src='https://images.unsplash.com/photo-1583939003579-730e3918a45a?auto=format&fit=crop&w=600&q=80'" />
+          </div>
+          <div class="polaroid-caption">
+            <span class="caption-script">Under the Floral Arch</span>
+            <span class="caption-date" data-en="Spring Moments" data-si="වසන්තයේ මතක">වසන්තයේ මතක</span>
+          </div>
+        </div>
+
+        <div class="polaroid-card tilt-right polaroid--tall reveal delay-2" tabindex="0" role="button" aria-label="Photo 2">
+          <div class="tape-corner tape-right" aria-hidden="true"></div>
+          <div class="photo-inner">
+            <img src="images/gallery2.jpg" alt="Emma and James walk" loading="lazy" onerror="this.src='https://images.unsplash.com/photo-1511285560929-80b456fea0bc?auto=format&fit=crop&w=600&q=80'" />
+          </div>
+          <div class="polaroid-caption">
+            <span class="caption-script">Strolling in Blossom</span>
+            <span class="caption-date" data-en="Our Favorite Walk" data-si="සෙනෙහසේ මාවත">සෙනෙහසේ මාවත</span>
+          </div>
+        </div>
+
+        <div class="polaroid-card tilt-slight reveal delay-1" tabindex="0" role="button" aria-label="Photo 3">
+          <div class="gold-clip" aria-hidden="true"></div>
+          <div class="photo-inner">
+            <img src="images/gallery3.jpg" alt="Candlelit dinner" loading="lazy" onerror="this.src='https://images.unsplash.com/photo-1532712938310-34cb3982ef74?auto=format&fit=crop&w=600&q=80'" />
+          </div>
+          <div class="polaroid-caption">
+            <span class="caption-script">Candlelit Evenings</span>
+            <span class="caption-date" data-en="Florence Nights" data-si="සැඳෑ සාදය">සැඳෑ සාදය</span>
+          </div>
+        </div>
+
+        <div class="polaroid-card tilt-left reveal delay-2" tabindex="0" role="button" aria-label="Photo 4">
+          <div class="tape-corner" aria-hidden="true"></div>
+          <div class="photo-inner">
+            <img src="https://images.unsplash.com/photo-1522673607200-164d1b6ce486?auto=format&fit=crop&w=600&q=80" alt="Smiling together" loading="lazy" />
+          </div>
+          <div class="polaroid-caption">
+            <span class="caption-script">Laughter &amp; Joy</span>
+            <span class="caption-date" data-en="Pure Happiness" data-si="පිරි සතුට">පිරි සතුට</span>
+          </div>
+        </div>
+
+        <div class="polaroid-card tilt-right reveal delay-3" tabindex="0" role="button" aria-label="Photo 5">
+          <div class="gold-clip" aria-hidden="true"></div>
+          <div class="photo-inner">
+            <img src="https://images.unsplash.com/photo-1520854221256-17451cc331bf?auto=format&fit=crop&w=600&q=80" alt="Holding hands" loading="lazy" />
+          </div>
+          <div class="polaroid-caption">
+            <span class="caption-script">Hand in Hand</span>
+            <span class="caption-date" data-en="Always Together" data-si="සදා ළඟින්">සදා ළඟින්</span>
+          </div>
+        </div>
+
+        <div class="polaroid-card tilt-slight polaroid--wide reveal delay-4" tabindex="0" role="button" aria-label="Photo 6">
+          <div class="tape-corner tape-center" aria-hidden="true"></div>
+          <div class="photo-inner">
+            <img src="https://images.unsplash.com/photo-1465495976277-4387d4b0b4c6?auto=format&fit=crop&w=1000&q=80" alt="Sunset proposal" loading="lazy" />
+          </div>
+          <div class="polaroid-caption">
+            <span class="caption-script">The Proposal Day 💍</span>
+            <span class="caption-date" data-en="Golden Hour Magic" data-si="පැතුම් පිරුණු හෝරාව">පැතුම් පිරුණු හෝරාව</span>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- ════════════════════════════════════════════════════════
+       6. REAL & EASY RSVP (WHATSAPP + FORM IN SINHALA & ENGLISH)
+  ════════════════════════════════════════════════════════ -->
+  <section class="rsvp-section" id="rsvp">
+    <div class="container text-center">
+      <p class="section-tag reveal" data-en="RSVP Confirmation" data-si="පැමිණීම ස්ථිර කිරීම">පැමිණීම ස්ථිර කිරීම</p>
+      <h2 class="section-title reveal" data-en="Will You Join Us?" data-si="ඔබත් අප සමඟ එක්වන්නේද?">ඔබත් අප සමඟ එක්වන්නේද?</h2>
+      <div class="section-ornament reveal" aria-hidden="true"><span></span>❦<span></span></div>
+      <p class="section-subtitle reveal" data-en="Kindly respond before September 1, 2026" data-si="කරුණාකර 2026 සැප්තැම්බර් 1 වන දිනට පෙර ඔබගේ පැමිණීම දන්වන්න">
+        කරුණාකර 2026 සැප්තැම්බර් 1 වන දිනට පෙර ඔබගේ පැමිණීම දන්වන්න
+      </p>
+
+      <div class="rsvp-card-wrapper reveal delay-1">
+        
+        <!-- WhatsApp One-Click Direct Confirmation -->
+        <div class="wa-rsvp-banner">
+          <div class="wa-badge" data-en="⚡ FASTEST METHOD" data-si="⚡ පහසුම ක්‍රමය">⚡ පහසුම ක්‍රමය</div>
+          <h3 data-en="Confirm Directly via WhatsApp" data-si="WhatsApp හරහා ක්ෂණිකව දන්වන්න">WhatsApp හරහා ක්ෂණිකව දන්වන්න</h3>
+          <p data-en="Send a pre-filled confirmation message directly to Emma &amp; James." data-si="එක click එකකින් ඔබගේ පැමිණීම Couple එකට කෙලින්ම WhatsApp කරන්න.">
+            එක click එකකින් ඔබගේ පැමිණීම Couple එකට කෙලින්ම WhatsApp කරන්න.
+          </p>
+
+          <a href="https://wa.me/39123456789?text=%E0%B6%86%E0%B6%BA%E0%B7%94%E0%B6%B6%E0%B7%9D%E0%B7%80%E0%B6%B1%E0%B7%8A%20Emma%20%26%20James!%20%E0%B6%85%E0%B6%B4%E0%B7%92%20%E0%B6%94%E0%B6%B6%E0%B6%9C%E0%B7%9A%20%E0%B7%80%E0%B7%92%E0%B7%80%E0%B7%8F%E0%B7%84%20%E0%B6%B8%E0%B6%82%E0%B6%9C%E0%B6%BD%E0%B7%8A%E0%B6%AF%E0%B7%92%E0%B6%B1%E0%B6%BA%E0%B6%A7%20%E0%B7%83%E0%B6%AD%E0%B7%94%E0%B6%A7%E0%B7%92%E0%B6%B1%E0%B7%8A%20%E0%B7%83%E0%B7%84%E0%B6%AD%E0%B7%8F%E0%B6%9C%E0%B7%93%20%E0%B7%80%E0%B7%99%E0%B6%B8%E0%B7%94!" target="_blank" rel="noopener" class="btn-whatsapp-rsvp" id="btnWhatsapp">
+            <svg width="22" height="22" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12.031 6.172c-3.181 0-5.767 2.586-5.768 5.766-.001 1.298.38 2.27 1.019 3.287l-.582 2.128 2.182-.573c.978.58 1.911.928 3.145.929 3.178 0 5.767-2.587 5.768-5.766.001-3.187-2.575-5.77-5.764-5.771zm3.392 8.244c-.144.405-.837.774-1.17.824-.312.045-.634.072-1.879-.442-1.487-.616-2.431-2.143-2.505-2.243-.074-.1-2.222-1.748-2.222-3.333 0-1.585.83-2.366 1.125-2.686.295-.32.645-.4.86-.4.215 0 .43.003.62.012.2.009.47-.075.735.56.275.66.935 2.28.935 2.38 0 .1.03.22-.04.36-.07.14-.11.23-.22.36-.11.13-.23.29-.33.39-.11.11-.22.23-.1.43.12.2.53.88 1.14 1.42.78.7 1.44.92 1.64 1.02.2.1.32.09.44-.05.12-.14.51-.59.65-.79.14-.2.28-.17.47-.1.19.07 1.2.57 1.41.67.21.1.35.15.4.24.05.09.05.52-.09.92z"/></svg>
+            <span data-en="Send WhatsApp Confirmation" data-si="WhatsApp හරහා ස්ථිර කරන්න">WhatsApp හරහා ස්ථිර කරන්න</span>
+          </a>
+        </div>
+
+        <div class="form-divider-text">
+          <span data-en="OR CONFIRM ON THIS FORM" data-si="නැතහොත් පහතින් විස්තර ඇතුළත් කරන්න">නැතහොත් පහතින් විස්තර ඇතුළත් කරන්න</span>
+        </div>
+
+        <!-- In-Page Form -->
+        <form class="clean-rsvp-form" id="rsvpForm" novalidate>
+          <div class="form-row">
+            <label for="guestName" data-en="Your Full Name *" data-si="ඔබගේ සම්පූර්ණ නම *">ඔබගේ සම්පූර්ණ නම *</label>
+            <input type="text" id="guestName" name="guest_name" class="form-input" placeholder="e.g. David &amp; Sarah / කසුන් සහ පවුලේ සැම" required />
+          </div>
+
+          <div class="form-row">
+            <label data-en="Attendance Status *" data-si="සහභාගීත්වය *">සහභාගීත්වය *</label>
+            <div class="attendance-radio-wrap">
+              <label class="radio-pill">
+                <input type="radio" name="attending" value="yes" checked />
+                <span data-en="🎉 Joyfully Accepts" data-si="🎉 සතුටින් සහභාගී වෙමි">🎉 සතුටින් සහභාගී වෙමි</span>
+              </label>
+              <label class="radio-pill">
+                <input type="radio" name="attending" value="no" />
+                <span data-en="🕊️ Regretfully Declines" data-si="🕊️ සහභාගී විය නොහැක">🕊️ සහභාගී විය නොහැක</span>
+              </label>
+            </div>
+          </div>
+
+          <div class="form-row" id="guestCountRow">
+            <label for="guestCount" data-en="Number of Guests Attending" data-si="සහභාගී වන සාමාජිකයින් ගණන">සහභාගී වන සාමාජිකයින් ගණන</label>
+            <select id="guestCount" name="guest_count" class="form-input">
+              <option value="1" data-en="1 Person" data-si="1 දෙනෙක්">1 දෙනෙක්</option>
+              <option value="2" selected data-en="2 Persons" data-si="2 දෙනෙක්">2 දෙනෙක්</option>
+              <option value="3" data-en="3 Persons" data-si="3 දෙනෙක්">3 දෙනෙක්</option>
+              <option value="4" data-en="4 Persons" data-si="4 දෙනෙක්">4 දෙනෙක්</option>
+              <option value="Family" data-en="Family / 5+" data-si="පවුලේ සැම (5+)">පවුලේ සැම (5+)</option>
+            </select>
+          </div>
+
+          <div class="form-row">
+            <label for="guestNotes" data-en="Wishes / Dietary Notes" data-si="සුභ පැතුම් හෝ විශේෂ සටහන්">සුභ පැතුම් හෝ විශේෂ සටහන්</label>
+            <input type="text" id="guestNotes" name="guest_notes" class="form-input" placeholder="e.g. Vegetarian / අපගේ උණුසුම් සුභ පැතුම්!" />
+          </div>
+
+          <button type="submit" class="btn-rsvp-submit" id="submitBtn">
+            <span data-en="Submit Confirmation 💌" data-si="පැමිණීම තහවුරු කරන්න 💌">පැමිණීම තහවුරු කරන්න 💌</span>
+          </button>
+        </form>
+
+        <!-- Confirmation Card -->
+        <div class="rsvp-success-card" id="rsvpSuccessCard" hidden>
+          <div class="success-icon">💐</div>
+          <h3 data-en="Thank You!" data-si="ස්තූතියි!">ස්තූතියි!</h3>
+          <p id="successGuestName" class="success-guest">Guest</p>
+          <p data-en="Your response has been recorded with joy. We can't wait to see you!" data-si="ඔබගේ පැමිණීම සාදරයෙන් සටහන් කරගන්නා ලදී. ඔබව දැකබලා ගැනීමට අපි මහත් නොඉවසිල්ලෙන් පසුවෙමු!">
+            ඔබගේ පැමිණීම සාදරයෙන් සටහන් කරගන්නා ලදී. ඔබව දැකබලා ගැනීමට අපි මහත් නොඉවසිල්ලෙන් පසුවෙමු!
+          </p>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- ════════════════════════════════════════════════════════
+       7. LIGHTBOX MODAL
+  ════════════════════════════════════════════════════════ -->
+  <div class="lightbox-modal" id="lightboxModal" role="dialog" aria-modal="true" aria-label="Photo Lightbox" hidden>
+    <button class="lightbox-btn-close" id="lightboxClose" aria-label="Close Lightbox">✕</button>
+    <button class="lightbox-nav-btn lightbox-prev" id="lightboxPrev" aria-label="Previous Photo">&#8249;</button>
+    
+    <div class="lightbox-content-box">
+      <img class="lightbox-display-img" id="lightboxImage" src="" alt="" />
+      <div class="lightbox-caption-box">
+        <p class="lightbox-caption-text" id="lightboxCaption"></p>
+        <span class="lightbox-counter" id="lightboxCounter">1 / 6</span>
+      </div>
+    </div>
+
+    <button class="lightbox-nav-btn lightbox-next" id="lightboxNext" aria-label="Next Photo">&#8250;</button>
+  </div>
+  <div class="lightbox-backdrop" id="lightboxBackdrop" hidden></div>
+
+  <!-- ════════════════════════════════════════════════════════
+       8. FOOTER (BILINGUAL)
+  ════════════════════════════════════════════════════════ -->
+  <footer class="wedding-footer">
+    <div class="container text-center">
+      <p class="footer-signoff" data-en="With love and warm regards" data-si="අපමණ සෙනෙහසින් යුතුව">අපමණ සෙනෙහසින් යුතුව</p>
+      <p class="footer-names">Chalith &amp; Piyumi</p>
+      <p class="footer-date">20 · 09 · 2026</p>
+      <p class="footer-hashtag">#ChalithAndPiyumi2026</p>
+      <div class="footer-divider" aria-hidden="true"></div>
+      <p class="footer-credit" data-en="Designed for our special wedding celebration" data-si="අපගේ විවාහ මංගල්‍යය වෙනුවෙන් ආදරයෙන් නිර්මාණය කරන ලදී">
+        අපගේ විවාහ මංගල්‍යය වෙනුවෙන් ආදරයෙන් නිර්මාණය කරන ලදී
+      </p>
+    </div>
+  </footer>
+
+  <script src="script.js"></script>
+</body>
+</html>
