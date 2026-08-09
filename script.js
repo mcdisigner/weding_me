@@ -47,8 +47,8 @@ function initEntranceEnvelope() {
   if (!entranceScreen) return;
 
   function openAndPlay() {
-    // 1. Play song immediately
-    startWeddingSong();
+    // 1. Play song immediately (MP3 if present, built-in melody otherwise)
+    startMusic();
     if (musicPill) musicPill.classList.add('playing');
 
     // 2. Animate entrance envelope away
@@ -64,8 +64,8 @@ function initEntranceEnvelope() {
 
   // Fallback: If user scrolls or clicks anywhere on body, auto-start music if not playing
   const autoStartOnFirstTouch = () => {
-    if (!isMusicPlaying) {
-      startWeddingSong();
+    if (!isMusicPlaying && !(document.getElementById('weddingMusic')?.paused === false)) {
+      startMusic();
       if (musicPill) musicPill.classList.add('playing');
     }
     document.removeEventListener('click', autoStartOnFirstTouch);
@@ -203,16 +203,27 @@ window.switchMap = switchMap;
 let audioCtx = null;
 let isMusicPlaying = false;
 let masterGain = null;
+let loopTimer = null;
+let audioBroken = false;
 
 function initMusicPlayer() {
   const btn = document.getElementById('musicToggleBtn');
   const audioElement = document.getElementById('weddingMusic');
   if (!btn) return;
 
+  // Probe the optional .mp3 up front; if it's missing/broken, fall back to the
+  // built-in synthesizer so the button never silently no-ops.
+  if (audioElement && audioElement.src) {
+    audioElement.addEventListener('error', () => { audioBroken = true; });
+    audioElement.load();
+  }
+
   btn.addEventListener('click', () => {
-    if (audioElement && audioElement.currentSrc) {
+    if (audioElement && audioElement.currentSrc && !audioBroken) {
       if (audioElement.paused) {
-        audioElement.play().then(() => btn.classList.add('playing')).catch(err => console.log(err));
+        audioElement.play()
+          .then(() => btn.classList.add('playing'))
+          .catch(() => { audioBroken = true; startWeddingSong(); btn.classList.add('playing'); });
       } else {
         audioElement.pause();
         btn.classList.remove('playing');
@@ -228,6 +239,16 @@ function initMusicPlayer() {
       btn.classList.add('playing');
     }
   });
+}
+
+// Preferred entry point: plays the embedded MP3 if available, otherwise the synth.
+function startMusic() {
+  const audioElement = document.getElementById('weddingMusic');
+  if (audioElement && audioElement.currentSrc && !audioBroken) {
+    audioElement.play().catch(() => { audioBroken = true; startWeddingSong(); });
+    return;
+  }
+  startWeddingSong();
 }
 
 function startWeddingSong() {
@@ -268,9 +289,9 @@ function startWeddingSong() {
 
     function noteToFreq(name) {
       const scale = { C: 0, D: 2, E: 4, F: 5, G: 7, A: 9, B: 11 };
-      const m = name.match(/^([A-G])(b?)(-?\d)$/);
+      const m = name.match(/^([A-G])([#b]?)(-?\d)$/);
       if (!m) return 440;
-      const semitone = scale[m[1]] + (m[2] === 'b' ? -1 : 0);
+      const semitone = scale[m[1]] + (m[2] === '#' ? 1 : m[2] === 'b' ? -1 : 0);
       const octave = parseInt(m[3]);
       return 440 * Math.pow(2, (semitone - 9 + (octave - 4) * 12) / 12);
     }
@@ -298,15 +319,20 @@ function startWeddingSong() {
       ['A2', 14, 0.5], ['E3', 14.5, 0.5], ['A3', 15, 0.5], ['C#4', 15.5, 0.5]
     ];
 
-    for (let loop = 0; loop < 10; loop++) {
-      const offset = loop * LOOP;
-      melodyNotes.forEach(([note, beat, dur]) => {
-        playNote(noteToFreq(note), startTime + offset + beat * BEAT, dur * BEAT, 0.44);
-      });
-      arpeggios.forEach(([note, beat, dur]) => {
-        playNote(noteToFreq(note), startTime + offset + beat * BEAT, dur * BEAT, 0.28);
-      });
-    }
+    const LOOP_GROUP = 4; // schedule 4 loops (~60s) at a time, then keep going forever
+    const scheduleLoops = (firstLoop) => {
+      for (let i = 0; i < LOOP_GROUP; i++) {
+        const offset = (firstLoop + i) * LOOP;
+        melodyNotes.forEach(([note, beat, dur]) => {
+          playNote(noteToFreq(note), startTime + offset + beat * BEAT, dur * BEAT, 0.44);
+        });
+        arpeggios.forEach(([note, beat, dur]) => {
+          playNote(noteToFreq(note), startTime + offset + beat * BEAT, dur * BEAT, 0.28);
+        });
+      }
+      loopTimer = setTimeout(() => scheduleLoops(firstLoop + LOOP_GROUP), LOOP * LOOP_GROUP * 1000);
+    };
+    scheduleLoops(0);
 
   } catch (err) {
     console.warn('Audio blocked:', err);
@@ -315,14 +341,21 @@ function startWeddingSong() {
 
 function stopWeddingSong() {
   if (!audioCtx) return;
+  isMusicPlaying = false; // allow instant restart while the old context fades out
+  if (loopTimer) {
+    clearTimeout(loopTimer);
+    loopTimer = null;
+  }
   try {
     if (masterGain) {
       masterGain.gain.linearRampToValueAtTime(0.0001, audioCtx.currentTime + 0.5);
     }
+    const ctx = audioCtx;
     setTimeout(() => {
-      audioCtx.close();
-      audioCtx = null;
-      isMusicPlaying = false;
+      if (audioCtx === ctx) {
+        audioCtx.close();
+        audioCtx = null;
+      }
     }, 600);
   } catch (_) {}
 }
@@ -452,7 +485,7 @@ function addToCalendar(type) {
   const icsData = [
     'BEGIN:VCALENDAR',
     'VERSION:2.0',
-    'PRODID:-//EmmaAndJamesWedding//EN',
+    'PRODID:-//ChalithAndPiyumiWedding//EN',
     'CALSCALE:GREGORIAN',
     'METHOD:PUBLISH',
     'BEGIN:VEVENT',

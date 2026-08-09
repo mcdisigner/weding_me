@@ -51,7 +51,7 @@
   --r-pill:          999px;
 
   /* Hero Background */
-  --hero-bg: url('https://images.unsplash.com/photo-1519741497674-611481863552?auto=format&fit=crop&w=1920&q=85');
+  --hero-bg: url('images/hero.jpg');
 
   --ease:            cubic-bezier(0.25, 0.46, 0.45, 0.94);
   --t-normal:        0.35s var(--ease);

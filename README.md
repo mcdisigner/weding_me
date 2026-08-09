@@ -1,4 +1,4 @@
-# 💍 Digital Wedding Invitation – Emma & James
+# 💍 Digital Wedding Invitation – Chalith & Piyumi
 
 A complete, ready-to-deploy single-page digital wedding invitation built with
 pure HTML5, Vanilla CSS3, and Vanilla JavaScript.
@@ -27,14 +27,14 @@ my idea/
 ## ✏️ How to Customize
 
 ### 1. Names & Date (index.html)
-Search for "Emma" and "James" and replace with the real couple's names.
+Search for "Chalith" and "Piyumi" and replace with the real couple's names.
 Search for "September 20" or "20 September 2026" and update the date.
 
 ### 2. Countdown & Calendar (script.js → CONFIG object at the top)
 ```js
 WEDDING_DATE: '2026-09-20T16:00:00',   // ← Your ceremony date/time
-BRIDE_NAME:   'Emma Clarke',
-GROOM_NAME:   'James Bennett',
+COUPLE_NAMES: 'Chalith & Piyumi',
+WHATSAPP_PHONE: '39123456789',
 CEREMONY: { start: '20260920T140000Z', ... },
 RECEPTION: { start: '20260920T170000Z', ... },
 ```
@@ -80,12 +80,14 @@ All design tokens are in one place:
 
 ---
 
-## 🎵 Adding Background Music
+## 🎵 Background Music
+Out of the box the site plays a built-in romantic wedding melody (Canon in D
+progression synthesized in-browser, loops forever — no file needed).
+
+To use your own song instead:
 1. Create a `music/` folder in the project root
 2. Add your royalty-free wedding song as `music/background.mp3`
-3. The ♪ button in the bottom-right corner will play it
-
-*Tip: Sites like Pixabay.com and Free Music Archive have free wedding music.*
+3. The ♪ button will play it; the built-in melody is used only if the file is missing
 
 ---
 
@@ -112,7 +114,6 @@ This is a static site – you can host it anywhere:
 - ✅ Photo gallery with CSS Grid + lightbox zoom
 - ✅ RSVP form with validation (Formspree / EmailJS ready)
 - ✅ Scroll-triggered fade-up animations
-- ✅ Sticky nav with hamburger menu (mobile)
-- ✅ Back-to-top button
+- ✅ Bilingual top action bar (සිංහල / English switcher + music toggle)
 - ✅ 100% mobile responsive
 - ✅ Accessible (ARIA labels, keyboard navigation, reduced motion)
